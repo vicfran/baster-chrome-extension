@@ -3,10 +3,6 @@
     "description" : "Baster description",
     "version": "1.0",
     "manifest_version": 2,
-    "content_scripts": [{
-        "matches": ["*://*.linkedin.com/in/*"],
-        "js": ["js/jquery.js", "js/content-script.js"]
-    }],
     "background": {
         "scripts": [
             "js/jquery.js",
