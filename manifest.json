@@ -1,0 +1,32 @@
+{
+    "name": "Baster",
+    "description" : "Baster description",
+    "version": "1.0",
+    "manifest_version": 2,
+    "content_scripts": [{
+        "matches": ["*://*.linkedin.com/in/*"],
+        "js": ["js/jquery.js", "js/content-script.js"]
+    }],
+    "background": {
+        "scripts": [
+            "js/jquery.js",
+            "js/background.js"
+        ]
+    },
+    "page_action": {
+        "default_icon": {
+            "16": "images/icon.png"
+        },
+        "default_title": "Baster",
+        "default_popup": "html/popup.html"
+    },
+    "permissions": [
+        "http://localhost:8080/*",
+        "*://*.linkedin.com/*",
+        "tabs",
+        "webNavigation",
+        "declarativeContent",
+        "activeTab"
+    ],
+    "content_security_policy": "script-src 'self' http://localhost:8080/; object-src 'self'"
+}
