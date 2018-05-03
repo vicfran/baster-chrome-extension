@@ -24,7 +24,8 @@ chrome.runtime.onMessage.addListener(
 function sendBody(body) {
     console.log(body)
     var request = new XMLHttpRequest();
-    request.open('GET', "http://localhost:8080/", true);
+    request.open('POST', "http://localhost:8080/", true);
+    request.setRequestHeader("Content-Type", "application/json");
     request.onreadystatechange = function() {
         if (request.readyState == XMLHttpRequest.DONE) {
             if (request.status == 200) {
@@ -34,5 +35,5 @@ function sendBody(body) {
             }
         }
     }
-    request.send(body);
+    request.send(JSON.stringify({body: body}));
 }
