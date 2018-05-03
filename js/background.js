@@ -23,12 +23,16 @@ chrome.runtime.onMessage.addListener(
 
 function sendBody(body) {
     console.log(body)
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            alert(xhr.responseText);
+    var request = new XMLHttpRequest();
+    request.open('GET', "http://localhost:8080/", true);
+    request.onreadystatechange = function() {
+        if (request.readyState == XMLHttpRequest.DONE) {
+            if (request.status == 200) {
+                alert(request.responseText);
+            } else {
+                alert("Error");
+            }
         }
     }
-    xhr.open('GET', "http://localhost:8080/" + body, true);
-    xhr.send(null);
+    request.send(body);
 }
